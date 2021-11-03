@@ -1,0 +1,12 @@
+[Unit]
+Description=Bind download station temporary folder
+After=syno-share.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/mount --bind /volume1/@download /volume1/pri/temporary
+RemainAfterExit=true
+ExecStop=/bin/umount /volume1/pri/temporary
+
+[Install]
+WantedBy=multi-user.target
